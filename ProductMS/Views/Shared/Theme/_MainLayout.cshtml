@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="light-style layout-navbar-fixed layout-menu-fixed layout-compact " dir="ltr" data-theme="theme-default" data-assets-path="/theme/assets/" data-template="vertical-menu-template" data-style="light">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+	<title>@ViewData["Title"] - ProductMS</title>
+
+	<meta name="description" content="QHRM assignment for product CRUD" />
+	<meta name="keywords" content="qhrm assignment, product management, product crud,">
+
+	@await Html.PartialAsync("Theme/_Styles")
+
+	<!-- Helpers -->
+	<script src="/theme/assets/vendor/js/helpers.js"></script>
+	<!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+	<!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
+	<script src="/theme/assets/vendor/js/template-customizer.js"></script>
+	<!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+	<script src="/theme/assets/js/config.js"></script>
+</head>
+<body>
+	<div class="layout-wrapper layout-content-navbar  ">
+		<div class="layout-container">
+
+			@await Html.PartialAsync("Theme/_SideMenu")
+			
+			<div class="layout-page">
+				@await Html.PartialAsync("Theme/_Header")
+				<div class="content-wrapper">
+
+					@RenderBody()
+
+					@await Html.PartialAsync("Theme/_Footer")
+					<div class="content-backdrop fade"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	@await Html.PartialAsync("Theme/_Scripts")
+</body>
+</html>
