@@ -1,3 +1,125 @@
 ﻿@{
 	Layout = Layouts.MainLayout;
+	ViewData["Title"] = "Product List";
+}
+
+<section class="content-header">
+	<div class="container-fluid">
+		<div class="row mb-2">
+			<div class="col-sm-6">
+				<h2>Product</h2>
+			</div>
+			<div class="col-sm-6">
+				<ol class="breadcrumb float-sm-right">
+					<li class="breadcrumb-item"><a asp-action="Index">Product</a></li>
+					<li class="breadcrumb-item active">List</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12">
+				<div class="card">
+					<div class="card-header text-right">
+						<a asp-action="Create" class="btn btn-primary  btn-flat">
+							<h3 class="card-title">Create</h3>
+						</a>
+					</div>
+					<!-- /.card-header -->
+					<div class="card-body">
+						<table id="product-table" class="table table-bordered table-hover table-striped">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Product Name</th>
+									<th>Price</th>
+									<th>Description</th>
+									<th>Created Date</th>
+									<th class="text-center" style="width: 10%">Action</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+@await Html.PartialAsync("Modals")
+
+@section Scripts {
+	<script>
+
+		message = "@Html.Raw(TempData["Message"])"
+		if (message != ""){
+			$("#modal-message").html(message);
+			$("#message-modal").modal('show');
+		}
+
+		$(document).ready(()=>{
+			drawTable();
+		})
+
+		function drawTable(){
+			 $('#product-table').DataTable({
+				  "paging": true,
+				  "destroyed": true,
+				  "searching": true,
+				  "ordering": true,
+				  "info": true,
+				  "autoWidth": false,
+				  "responsive": true,
+				  "serverSide": true,
+				   "ajax": {
+					  "url": "/Product/DataList/",
+					  "type": "POST",
+					  "datatype": "json"
+				  },
+				  "columnDefs": [{
+					  "targets": [0,5],
+					  "searchable": false,
+					  "orderable": false
+				  }],
+				   "columns": [
+					  {
+						 "data": null,
+						 "render": function (data, type, row, meta) {
+								return meta.row + meta.settings._iDisplayStart + 1;
+							}
+					  },
+					  { "data": "name", "name": "Name", "autoWidth": true },
+					  { "data": "priceString", "name": "Price", "autoWidth": true },
+					  { "data": "description", "name": "Description", "autoWidth": true },
+					  { "data": "createdDateString", "name": "CreatedDate", "autoWidth": true },
+					  {
+						  "data": "id",
+						  "render": function (data) {
+							  return `<a href='/Product/Edit/${data}' class='btn btn-sm btn-outline-info'>
+										   <i class="fas fa-pen-square"></i>
+									  </a>
+									  <a href='javascript:void(0)' onclick="clickDeleteBtn(${data})" class='btn btn-sm btn-outline-danger'>
+										  <i class="fas fa-trash-alt"></i>
+									   </a>`;
+						  },
+						  "className" : "text-center"
+					  },
+				   ]
+			});
+		}
+
+		function clickDeleteBtn(id){
+			 $('#delete-form #delete-id').val(id);
+			 $("#delete-modal").modal('show');
+		}
+
+		$("#btn-delete-form").on("click",() =>{
+			$("#delete-form").submit();
+		})
+
+	</script>
 }
