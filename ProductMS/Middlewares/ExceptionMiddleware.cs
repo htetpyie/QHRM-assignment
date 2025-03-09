@@ -18,7 +18,7 @@
 
 				if (context.Response.StatusCode == 404)
 				{
-					context.Response.Redirect("/Home/PageNotFound");
+					context.Response.Redirect("/Home/NotFoundPage");
 				}
 			}
 			catch (Exception ex)

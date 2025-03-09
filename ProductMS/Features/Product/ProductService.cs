@@ -22,7 +22,7 @@ namespace ProductMS.Features.Product
 		public DatatableResponseModel<ProductViewModel> GetList(DatatableRequestModel request)
 		{
 			string orderByClause = !String.IsNullOrWhiteSpace(request.SortColumn)
-				? $"ORDER BY  {request.SortColumn} {request.SortColumnDirection}"
+				? $"ORDER BY {request.SortColumn} {request.SortColumnDirection}"
 				: "ORDER BY Id";
 			string searchingClause = !String.IsNullOrWhiteSpace(request.SearchValue?.Trim())
 				? "And Name LIKE '%'+@SearchValue+'%' OR Price LIKE '%'+@SearchValue+'%' OR Description LIKE '%'+@SearchValue+'%'"
@@ -34,8 +34,8 @@ namespace ProductMS.Features.Product
                 WHERE IsDelete = 0 
 				{searchingClause}
                 {orderByClause}
-                OFFSET {request.Skip} ROWS
-                FETCH NEXT {request.PageSize} ROWS ONLY;
+                OFFSET @Skip ROWS
+                FETCH NEXT @PageSize ROWS ONLY;
             ";
 
 			var dataList = _dapperService.Query<ProductViewModel>(query, request);
@@ -56,15 +56,15 @@ namespace ProductMS.Features.Product
 
 		public int Update(ProductViewModel model)
 		{
-			var query = "UPDATE Product SET Name = @name, Price = @price, Description = @description, UpdatedDate = GETDATE() WHERE id = @id and IsDelete = 0;";
+			var query = "UPDATE Product SET Name = @name, Price = @price, Description = @description, ModifiedDate = GETDATE() WHERE id = @id and IsDelete = 0;";
 			var result = _dapperService.Execute(query, model);
 			return result;
 		}
 
 		public int Delete(int id)
 		{
-			var query = "UPDATE Product SET IsDelete = 1, UpdatedDate = GETDATE() WHERE id = @id";
-			var result = _dapperService.Execute(query, id);
+			var query = "UPDATE Product SET IsDelete = 1, ModifiedDate = GETDATE() WHERE id = @id";
+			var result = _dapperService.Execute(query, new { id });
 			return result;
 		}
 

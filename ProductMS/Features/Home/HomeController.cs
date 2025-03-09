@@ -9,7 +9,7 @@ namespace ProductMS.Features.Home
 			return View(message);
 		}
 
-		public IActionResult PageNotFound()
+		public IActionResult NotFoundPage()
 		{
 			return View();
 		}

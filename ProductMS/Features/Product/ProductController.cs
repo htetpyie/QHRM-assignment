@@ -20,9 +20,17 @@ namespace ProductMS.Features.Product
 		[HttpPost]
 		public IActionResult DataList()
 		{
-			var datatableRequestModel = GetDataTableRequest();
-			var response = _productService.GetList(datatableRequestModel);
-			return Ok(response);
+			try
+			{
+				var datatableRequestModel = GetDataTableRequest();
+				var response = _productService.GetList(datatableRequestModel);
+				return Ok(response);
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+
 		}
 
 		public IActionResult Create(ProductViewModel model)
@@ -56,9 +64,54 @@ namespace ProductMS.Features.Product
 			return RedirectToAction(nameof(Index));
 		}
 
-		public IActionResult Edit(string id)
+		public IActionResult Edit(int id)
 		{
-			return View();
+			var productModel = _productService.GetById(id);
+
+			if (productModel is null) return PageNotFound();
+
+			return View(productModel);
+		}
+
+		[HttpPost]
+		public IActionResult Update(ProductViewModel model)
+		{
+			if (!ModelState.IsValid)
+			{
+				TempData["Message"] = "Your data is not valid. Please try again!";
+				return View(nameof(Edit), model);
+			}
+
+			bool isDpulicate = _productService.IsDuplicate(model);
+			if (isDpulicate)
+			{
+				TempData["Message"] = "Product is already existed!";
+				return View(nameof(Edit), model);
+			}
+
+			int updateResult = _productService.Update(model);
+			if (updateResult < 1)
+			{
+				TempData["Message"] = "Something went wrong. Please try again!";
+				return View(nameof(Edit), model);
+			}
+
+			TempData["Message"] = "Product is updated successfully!";
+			return RedirectToAction(nameof(Index));
+		}
+
+		[HttpPost]
+		public IActionResult Delete(int id)
+		{
+			var productModel = _productService.GetById(id);
+			if (productModel is null) return PageNotFound();
+
+			int deleteResult = _productService.Delete(id);
+			TempData["Message"] = deleteResult < 1
+				? "Something went wrong. Please try again!"
+				: "Product is deleted successfully!";
+
+			return RedirectToAction(nameof(Index));
 		}
 	}
 }

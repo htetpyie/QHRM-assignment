@@ -30,5 +30,10 @@ namespace ProductMS.Features.Base
 
 			return request;
 		}
+
+		protected IActionResult PageNotFound()
+		{
+			return RedirectToAction("/Home/NotFoundPage");
+		}
 	}
 }

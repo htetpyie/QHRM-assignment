@@ -24,8 +24,9 @@
 			<div class="col-12">
 				<div class="card">
 					<div class="card-header text-right">
-						<a asp-action="Create" class="btn btn-primary  btn-flat">
-							<h3 class="card-title">Create</h3>
+						<a asp-action="Create" asp-controller="Product" class="btn btn-primary">
+							<i class="fas fa-plus-circle mr-2"></i>
+							New
 						</a>
 					</div>
 					<!-- /.card-header -->
@@ -38,7 +39,7 @@
 									<th>Price</th>
 									<th>Description</th>
 									<th>Created Date</th>
-									<th class="text-center" style="width: 10%">Action</th>
+									<th class="text-center" style="min-width: 80px !important">Action</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -78,7 +79,10 @@
 				   "ajax": {
 					  "url": "/Product/DataList/",
 					  "type": "POST",
-					  "datatype": "json"
+					  "datatype": "json",
+					  "error" : function(){
+						  window.location.href = 'Home/Error';
+					  }
 				  },
 				  "columnDefs": [{
 					  "targets": [0,5],
