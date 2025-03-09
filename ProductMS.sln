@@ -12,7 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Document", "Document", "{E38392F7-E245-42BC-BEAE-700895568875}"
 	ProjectSection(SolutionItems) = preProject
 		ProductMS.sql = ProductMS.sql
-		C:\Users\htetp\Desktop\project sample.png = C:\Users\htetp\Desktop\project sample.png
+		project-sample.png = project-sample.png
 		project-structure.png = project-structure.png
 		README.md = README.md
 	EndProjectSection

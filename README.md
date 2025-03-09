@@ -54,7 +54,7 @@ dotnet run
 ```
 
 5. Use The App
-<img src="https://github.com/htetpyie/QHRM-assignment/blob/master/project%20sample.png"></img>
+<img src="https://github.com/htetpyie/QHRM-assignment/blob/master/project-sample.png"></img>
 
 
 
