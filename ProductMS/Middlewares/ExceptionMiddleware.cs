@@ -5,9 +5,10 @@
 		private readonly RequestDelegate _next;
 		private readonly ILogger _logger;
 
-		public ExceptionMiddleware(RequestDelegate next)
+		public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
 		{
 			_next = next;
+			_logger = logger;
 		}
 
 		public async Task InvokeAsync(HttpContext context)
@@ -29,7 +30,7 @@
 
 		public void HandleException(HttpContext context, Exception ex)
 		{
-			context.Response.ContentType = "text/html";
+			_logger.LogError(ex.Message);
 			context.Response.StatusCode = context.Response.StatusCode;
 			context.Response.Redirect("/Home/Error/");
 		}
