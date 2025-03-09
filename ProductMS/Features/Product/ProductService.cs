@@ -12,19 +12,23 @@ public class ProductService : IProductService
 	public ProductViewModel? GetById(int id)
 	{
 		var query = ProductQuery.SELECT;
-		var product = _dapperService.QueryFirstOrDefault<ProductViewModel>(query, new { id });
+		var product = _dapperService
+			.QueryFirstOrDefault<ProductViewModel>(query, new { id });
 		return product;
 	}
 
 	public DatatableResponseModel<ProductViewModel> GetList(DatatableRequestModel request)
 	{
 		var query = ProductQuery.GetPaginationQuery(request);
-		var dataList = _dapperService.Query<ProductViewModel>(query, request);
+		var dataList = _dapperService
+			.Query<ProductViewModel>(query, request);
 
 		var recordCountQuery = ProductQuery.GetCountQuery(request);
-		var totalRecords = _dapperService.QueryFirstOrDefault<int>(recordCountQuery);
+		var totalRecords = _dapperService
+			.QueryFirstOrDefault<int>(recordCountQuery);
 
-		var response = request.ChangeDatatableResponse(dataList, totalRecords);
+		var response = request
+			.ChangeDatatableResponse(dataList, totalRecords);
 		return response;
 	}
 

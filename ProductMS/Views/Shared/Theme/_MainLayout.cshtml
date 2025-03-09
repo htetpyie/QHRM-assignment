@@ -29,6 +29,8 @@
 
 		@await Html.PartialAsync("Theme/_Scripts")
 		@RenderSection("Scripts", required: false)
+
+		@await Html.PartialAsync("_ValidationScriptsPartial")
 	</div>
 </body>
 </html>

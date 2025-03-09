@@ -38,6 +38,7 @@ namespace ProductMS.Features.Product
 			return View(model);
 		}
 
+		[HttpPost]
 		public IActionResult Save(ProductViewModel model)
 		{
 			if (!ModelState.IsValid)
@@ -49,7 +50,9 @@ namespace ProductMS.Features.Product
 			bool isDpulicate = _productService.IsDuplicate(model);
 			if (isDpulicate)
 			{
-				TempData["Message"] = ConstantMessage.AlreadyExisted.Format(PRODUCT);
+				TempData["Message"] = ConstantMessage
+					.AlreadyExisted
+					.Format(PRODUCT);
 				return RedirectToAction(nameof(Create), model);
 			}
 
@@ -60,7 +63,9 @@ namespace ProductMS.Features.Product
 				return RedirectToAction(nameof(Create), model);
 			}
 
-			TempData["Message"] = ConstantMessage.CreatedSuccess.Format(PRODUCT);
+			TempData["Message"] = ConstantMessage
+				.CreatedSuccess
+				.Format(PRODUCT);
 			return RedirectToAction(nameof(Index));
 		}
 
@@ -85,7 +90,9 @@ namespace ProductMS.Features.Product
 			bool isDpulicate = _productService.IsDuplicate(model);
 			if (isDpulicate)
 			{
-				TempData["Message"] = ConstantMessage.AlreadyExisted.Format(PRODUCT);
+				TempData["Message"] = ConstantMessage
+					.AlreadyExisted
+					.Format(PRODUCT);
 				return View(nameof(Edit), model);
 			}
 
@@ -96,7 +103,9 @@ namespace ProductMS.Features.Product
 				return View(nameof(Edit), model);
 			}
 
-			TempData["Message"] = ConstantMessage.UpdatedSuccess.Format(PRODUCT);
+			TempData["Message"] = ConstantMessage
+				.UpdatedSuccess
+				.Format(PRODUCT);
 			return RedirectToAction(nameof(Index));
 		}
 
