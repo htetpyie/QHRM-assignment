@@ -9,6 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductMS.Shared", "Product
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductMS.DB", "ProductMS.DB\ProductMS.DB.csproj", "{43FB4B77-94FE-4918-A2E3-A1DC18695A6E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Document", "Document", "{E38392F7-E245-42BC-BEAE-700895568875}"
+	ProjectSection(SolutionItems) = preProject
+		project-structure.png = project-structure.png
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
