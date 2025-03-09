@@ -38,8 +38,10 @@ Ensure you have the following installed before proceeding:
 git clone https://github.com/htetpyie/QHRM-assignment.git
 ```
 
-2. Run the [ProductMS.script]() file in SQL Server
-
+2. Run the [ProductMS.script](https://github.com/htetpyie/QHRM-assignment/blob/master/ProductMS.sql) file in SQL Server
+```
+https://github.com/htetpyie/QHRM-assignment/blob/master/ProductMS.sql
+```
 
 3.  Configure Database with your connection in appsettings.json
 ```
