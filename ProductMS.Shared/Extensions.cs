@@ -1,5 +1,4 @@
-﻿using ProductMS.Features.Base;
-using ProductMS.Shared.Models;
+﻿using ProductMS.Shared.Models;
 
 namespace ProductMS.Shared
 {

@@ -1,5 +1,4 @@
-﻿
-namespace ProductMS.Features.Product
+﻿namespace ProductMS.Features.Product
 {
 	public interface IProductService
 	{

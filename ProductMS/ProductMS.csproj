@@ -7,11 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ProductMS.DB\ProductMS.DB.csproj" />
     <ProjectReference Include="..\ProductMS.Shared\ProductMS.Shared.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\js\" />
   </ItemGroup>
 
   <ItemGroup>

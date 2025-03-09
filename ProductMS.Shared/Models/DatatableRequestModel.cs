@@ -1,4 +1,4 @@
-﻿namespace ProductMS.Features.Base;
+﻿namespace ProductMS.Shared.Models;
 
 public class DatatableRequestModel
 {

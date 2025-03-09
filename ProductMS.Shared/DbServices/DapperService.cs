@@ -16,14 +16,6 @@ public class DapperService : IDapperService
 	public List<M> Query<M>(string query, object? param = null)
 	{
 		using IDbConnection db = new SqlConnection(_connectionString);
-		//if (param != null)
-		//{
-		//    var lst = db.Query<M>(query, param).ToList();
-		//}
-		//else
-		//{
-		//    var lst = db.Query<M>(query).ToList();
-		//}
 		var lst = db.Query<M>(query, param).ToList();
 		return lst;
 	}
@@ -31,14 +23,6 @@ public class DapperService : IDapperService
 	public M QueryFirstOrDefault<M>(string query, object? param = null)
 	{
 		using IDbConnection db = new SqlConnection(_connectionString);
-		//if (param != null)
-		//{
-		//    var lst = db.Query<M>(query, param).ToList();
-		//}
-		//else
-		//{
-		//    var lst = db.Query<M>(query).ToList();
-		//}
 		var item = db.Query<M>(query, param).FirstOrDefault();
 		return item!;
 	}
