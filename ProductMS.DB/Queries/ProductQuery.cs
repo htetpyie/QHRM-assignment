@@ -38,7 +38,7 @@ namespace ProductMS.DB.Queries
 		{
 			var searchValue = request.SearchValue?.Trim();
 			string searchingClause = !String.IsNullOrWhiteSpace(searchValue)
-				? $"AND (Name LIKE '%{searchValue}%' OR Price LIKE '%{searchValue}%' OR Description LIKE '%{searchValue}%')"
+				? $"AND (Name LIKE '%{searchValue}%' OR Price LIKE '%{searchValue}%' OR Description LIKE '%{searchValue}%') OR FORMAT(CreatedDate, 'MMM dd yyyy, hh:mm tt') LIKE '%{searchValue}%'"
 				: "";
 			return searchingClause;
 		}
