@@ -29,7 +29,7 @@ Ensure you have the following installed before proceeding:
 
 
 ### Project Structure
-<image src=".project-structure.png">
+<img src="https://github.com/htetpyie/QHRM-assignment/blob/master/project-structure.png"></img>
 
 ### Installation Steps
 1. Clone the Repository
