@@ -3,12 +3,12 @@
 ## Installation and Project Documentation
 
 ### Overview
-This document provides step by step instructions for intalling, configuring and running the Product CRU app using .NET with MSSQL Server database.
+This document provides step by step instructions for intallation, configuring and running the Product CRUD app using .NET with MSSQL Server database.
 
 ### Project Functions
 * Product List (Paging, Searching, Sorting)
-* Create Product (Validation, Duplicate)
-* Update Product (Validation, Duplicate)
+* Create Product (Validation, Duplication)
+* Update Product (Validation, Duplication)
 * Delete Product (Validation)
 * Route Handlers (404 Page)
 * Exception Handler (Error Page, Text Logging)
@@ -77,7 +77,7 @@ INSERT [dbo].[Product] ([Id], [Name], [Price], [Description], [IsDelete], [Creat
 INSERT [dbo].[Product] ([Id], [Name], [Price], [Description], [IsDelete], [CreatedDate], [CreatedBy], [ModifiedDate], [ModifiedBy]) VALUES (4, N'Dell XPS 15', CAST(1499.99 AS Decimal(10, 2)), N'High-performance laptop with Intel Core i7', 0, CAST(N'2025-03-09T19:10:43.090' AS DateTime), NULL, NULL, NULL)
 INSERT [dbo].[Product] ([Id], [Name], [Price], [Description], [IsDelete], [CreatedDate], [CreatedBy], [ModifiedDate], [ModifiedBy]) VALUES (5, N'Logitech MX Master 3S', CAST(99.99 AS Decimal(10, 2)), N'Ergonomic wireless mouse for productivity', 0, CAST(N'2025-03-09T19:10:43.090' AS DateTime), NULL, NULL, NULL)
 INSERT [dbo].[Product] ([Id], [Name], [Price], [Description], [IsDelete], [CreatedDate], [CreatedBy], [ModifiedDate], [ModifiedBy]) VALUES (6, N'Apple MacBook Air M2', CAST(1199.99 AS Decimal(10, 2)), N'Lightweight laptop with M2 chip', 0, CAST(N'2025-03-09T19:10:43.090' AS DateTime), NULL, NULL, NULL)
-INSERT [dbo].[Product] ([Id], [Name], [Price], [Description], [IsDelete], [CreatedDate], [CreatedBy], [ModifiedDate], [ModifiedBy]) VALUES (7, N'Bose SoundLink Revolve', CAST(179.99 AS Decimal(10, 2)), N'Portable Bluetooth speaker with 360° sound', 0, CAST(N'2025-03-09T19:10:43.090' AS DateTime), NULL, NULL, NULL)
+INSERT [dbo].[Product] ([Id], [Name], [Price], [Description], [IsDelete], [CreatedDate], [CreatedBy], [ModifiedDate], [ModifiedBy]) VALUES (7, N'Bose SoundLink Revolve', CAST(179.99 AS Decimal(10, 2)), N'Portable Bluetooth speaker with 360Â° sound', 0, CAST(N'2025-03-09T19:10:43.090' AS DateTime), NULL, NULL, NULL)
 INSERT [dbo].[Product] ([Id], [Name], [Price], [Description], [IsDelete], [CreatedDate], [CreatedBy], [ModifiedDate], [ModifiedBy]) VALUES (8, N'Samsung 65" 4K Smart TV', CAST(1299.99 AS Decimal(10, 2)), N'Ultra HD Smart TV with QLED technology', 0, CAST(N'2025-03-09T19:10:43.090' AS DateTime), NULL, NULL, NULL)
 INSERT [dbo].[Product] ([Id], [Name], [Price], [Description], [IsDelete], [CreatedDate], [CreatedBy], [ModifiedDate], [ModifiedBy]) VALUES (9, N'PlayStation 5', CAST(499.99 AS Decimal(10, 2)), N'Next-gen gaming console by Sony', 0, CAST(N'2025-03-09T19:10:43.090' AS DateTime), NULL, NULL, NULL)
 INSERT [dbo].[Product] ([Id], [Name], [Price], [Description], [IsDelete], [CreatedDate], [CreatedBy], [ModifiedDate], [ModifiedBy]) VALUES (10, N'Nike Air Jordan 1', CAST(180.00 AS Decimal(10, 2)), N'Iconic basketball sneakers', 0, CAST(N'2025-03-09T19:10:43.090' AS DateTime), NULL, NULL, NULL)
