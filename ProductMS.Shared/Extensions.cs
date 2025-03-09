@@ -14,5 +14,11 @@ namespace ProductMS.Shared
 			response.RecordsFiltered = totalRecord;
 			return response;
 		}
+
+		public static string Format(this string str, params object[] args)
+		{
+			return String.Format(str, args);
+		}
+
 	}
 }

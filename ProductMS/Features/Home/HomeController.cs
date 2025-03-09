@@ -4,9 +4,9 @@ namespace ProductMS.Features.Home
 {
 	public class HomeController : Controller
 	{
-		public IActionResult Error(string message)
+		public IActionResult Error()
 		{
-			return View(message);
+			return View();
 		}
 
 		public IActionResult NotFoundPage()

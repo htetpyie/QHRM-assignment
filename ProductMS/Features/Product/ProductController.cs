@@ -6,6 +6,7 @@ namespace ProductMS.Features.Product
 	{
 
 		private readonly IProductService _productService;
+		private const string PRODUCT = "Product";
 
 		public ProductController(IProductService productService)
 		{
@@ -30,7 +31,6 @@ namespace ProductMS.Features.Product
 			{
 				throw;
 			}
-
 		}
 
 		public IActionResult Create(ProductViewModel model)
@@ -42,25 +42,25 @@ namespace ProductMS.Features.Product
 		{
 			if (!ModelState.IsValid)
 			{
-				TempData["Message"] = "Your data is not valid. Please try again!";
+				TempData["Message"] = ConstantMessage.InvalidData;
 				return RedirectToAction(nameof(Create), model);
 			}
 
 			bool isDpulicate = _productService.IsDuplicate(model);
 			if (isDpulicate)
 			{
-				TempData["Message"] = "Product is already existed!";
+				TempData["Message"] = ConstantMessage.AlreadyExisted.Format(PRODUCT);
 				return RedirectToAction(nameof(Create), model);
 			}
 
 			int saveResult = _productService.Save(model);
 			if (saveResult < 1)
 			{
-				TempData["Message"] = "Something went wrong. Please try again!";
+				TempData["Message"] = ConstantMessage.Error;
 				return RedirectToAction(nameof(Create), model);
 			}
 
-			TempData["Message"] = "Product is created successfully!";
+			TempData["Message"] = ConstantMessage.CreatedSuccess.Format(PRODUCT);
 			return RedirectToAction(nameof(Index));
 		}
 
@@ -78,25 +78,25 @@ namespace ProductMS.Features.Product
 		{
 			if (!ModelState.IsValid)
 			{
-				TempData["Message"] = "Your data is not valid. Please try again!";
+				TempData["Message"] = ConstantMessage.InvalidData;
 				return View(nameof(Edit), model);
 			}
 
 			bool isDpulicate = _productService.IsDuplicate(model);
 			if (isDpulicate)
 			{
-				TempData["Message"] = "Product is already existed!";
+				TempData["Message"] = ConstantMessage.AlreadyExisted.Format(PRODUCT);
 				return View(nameof(Edit), model);
 			}
 
 			int updateResult = _productService.Update(model);
 			if (updateResult < 1)
 			{
-				TempData["Message"] = "Something went wrong. Please try again!";
+				TempData["Message"] = ConstantMessage.Error;
 				return View(nameof(Edit), model);
 			}
 
-			TempData["Message"] = "Product is updated successfully!";
+			TempData["Message"] = ConstantMessage.UpdatedSuccess.Format(PRODUCT);
 			return RedirectToAction(nameof(Index));
 		}
 
@@ -108,8 +108,8 @@ namespace ProductMS.Features.Product
 
 			int deleteResult = _productService.Delete(id);
 			TempData["Message"] = deleteResult < 1
-				? "Something went wrong. Please try again!"
-				: "Product is deleted successfully!";
+				? ConstantMessage.Error
+				: ConstantMessage.DeleteSuccess.Format(PRODUCT);
 
 			return RedirectToAction(nameof(Index));
 		}
