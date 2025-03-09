@@ -38,10 +38,8 @@ Ensure you have the following installed before proceeding:
 git clone https://github.com/htetpyie/QHRM-assignment.git
 ```
 
-2. Run the [ProductMS.script](https://github.com/htetpyie/QHRM-assignment/blob/master/ProductMS.sql) file in SQL Server
-```
-https://github.com/htetpyie/QHRM-assignment/blob/master/ProductMS.sql
-```
+2. Run the [ProductMS.script](https://github.com/htetpyie/QHRM-assignment/blob/master/ProductMS.sql) in SQL Server
+
 
 3.  Configure Database with your connection in appsettings.json
 ```
@@ -54,6 +52,11 @@ https://github.com/htetpyie/QHRM-assignment/blob/master/ProductMS.sql
 ```
 dotnet run
 ```
+
+5. Use The App
+<img src="https://github.com/htetpyie/QHRM-assignment/blob/master/project-sample.png"></img>
+
+
 
 
 
